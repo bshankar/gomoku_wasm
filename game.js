@@ -19,7 +19,7 @@ Module.addOnPostRun(() => {
   let playerTurn = false
   let currentPlayer = 0
   let search = null
-  const depth = 7
+  const depth = 1
 
   function startGame () {
     search = new Module.Search()
@@ -37,23 +37,29 @@ Module.addOnPostRun(() => {
   const displayStatus = msg => { $('evalHeader').innerHTML = msg }
   const getAnalysisMsg = bestMoveInfo => 'Eval: ' + bestMoveInfo.eval +
         '  depth: ' + depth + ' nodes: ' + bestMoveInfo.nodes
+  const getWinMessage = () => {
+    if (playerTurn === true) return 'I win!'
+    return 'Well played. You win!'
+  }
 
   function makeBestMove () {
     if (search.winner() === -1) {
       const bestMoveInfo = search.calcBestMove(depth, currentPlayer)
       displayStatus(getAnalysisMsg(bestMoveInfo))
       placeBead(bestMoveInfo.bestMove)
+      if (search.winner() !== -1) displayStatus(getWinMessage())
     }
   }
 
   function togglePlayer () {
-    playerTurn ^= true
+    playerTurn = !playerTurn
     currentPlayer ^= 1
   }
 
   function readPlayerMove (cell) {
     if (search.winner() === -1) {
       placeBead(cell)
+      if (search.winner() !== -1) displayStatus(getWinMessage())
       makeBestMove()
     }
   }
