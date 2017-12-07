@@ -18,29 +18,28 @@ Module.addOnPostRun(() => {
 
   let playerTurn = false
   let currentPlayer = 0
-  let board = new Module.Board()
-  let search = new Module.Search(board)
-  const depth = 4
+  let search = null
+  const depth = 7
 
   function startGame () {
-    board = new Module.Board()
-    search = new Module.Search(board)
+    search = new Module.Search()
     playerTurn = $('playWhiteCheckbox').checked
     for (let i = 0; i < 361; ++i) $('' + i).className = 'empty'
     if (playerTurn === false) makeBestMove()
   }
 
   function placeBead (cell) {
-    board.place(currentPlayer, cell)
+    search.place(currentPlayer, cell)
     $(cell).className = 'p' + currentPlayer
     togglePlayer()
   }
 
   const displayStatus = msg => { $('evalHeader').innerHTML = msg }
-  const getAnalysisMsg = bestMoveInfo => 'Eval: ' + bestMoveInfo.eval + ' nodes: ' + bestMoveInfo.nodes
+  const getAnalysisMsg = bestMoveInfo => 'Eval: ' + bestMoveInfo.eval +
+        '  depth: ' + depth + ' nodes: ' + bestMoveInfo.nodes
 
   function makeBestMove () {
-    if (board.winner() === -1) {
+    if (search.winner() === -1) {
       const bestMoveInfo = search.calcBestMove(depth, currentPlayer)
       displayStatus(getAnalysisMsg(bestMoveInfo))
       placeBead(bestMoveInfo.bestMove)
@@ -53,7 +52,7 @@ Module.addOnPostRun(() => {
   }
 
   function readPlayerMove (cell) {
-    if (board.winner() === -1) {
+    if (search.winner() === -1) {
       placeBead(cell)
       makeBestMove()
     }
@@ -62,4 +61,3 @@ Module.addOnPostRun(() => {
   $('newGameButton').addEventListener('click', startGame)
   for (let i = 0; i < 361; ++i) $('' + i).addEventListener('click', () => readPlayerMove(i))
 })
-
