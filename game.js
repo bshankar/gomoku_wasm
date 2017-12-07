@@ -14,13 +14,16 @@ function getGridHtml (m, n) {
 document.getElementById('grid').innerHTML = getGridHtml(19, 19)
 
 Module.addOnPostRun(() => {
-
   const $ = document.getElementById
-
-  function clearGame () {
+  let playerTurn = false
+  let currentPlayer = 0
+  
+  function startGame (depth = 6) {
     const board = new Module.Board()
     const search = new Module.Search(board)
+    playerTurn = $('playWhiteCheckbox').checked
     for (let i = 0; i < 361; ++i) $(i).className = 'empty'
+    if (playerTurn === false) makeBestMove(currentPlayer, depth)
   }
   
   function placeBead (player, cell) {
@@ -33,12 +36,19 @@ Module.addOnPostRun(() => {
     $(bestMoveInfo.bestMove)[0].innerHTML = analysis
   }
 
-  function makeBestMove (player, depth = 6) {
+  function makeBestMove (player, depth) {
     const bestMoveInfo = search.calcBestMove(depth, player)
     displayAnalysis(bestMoveInfo)
     placeBead(player, bestMoveInfo.bestMove)
+    togglePlayer()
   }
 
-  let playerTurn = $('playWhiteCheckbox').checked
-  
+  function togglePlayer () {
+    playerTurn ^= true
+    currentPlayer ^= 1
+  }
+
+  function readPlayerMove (id) {
+    togglePlayer()
+  }
 })
