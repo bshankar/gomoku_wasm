@@ -19,7 +19,7 @@ Module.addOnPostRun(() => {
   let playerTurn = false
   let currentPlayer = 0
   let search = null
-  const depth = 1
+  const depth = 6
 
   function startGame () {
     search = new Module.Search()
