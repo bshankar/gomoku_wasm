@@ -1,0 +1,21 @@
+.empty {
+  width:1.4em;
+  height:1.4em;
+  background:#fd5;
+}
+
+.p0 {
+  width:1.4em;
+  height:1.4em;
+  background:#f81;
+}
+
+.p1 {
+  width:1.4em;
+  height:1.4em;
+  background:#321;
+}
+
+.eval {
+  color: #333;
+}

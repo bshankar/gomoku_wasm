@@ -1,32 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <title>Play Gomoku</title>
-        <style type="text/css" media="screen">
-         .empty {
-           width:1.4em;
-           height:1.4em;
-           background:#fd5;
-         }
-
-         .p0 {
-           width:1.4em;
-           height:1.4em;
-           background:#f81;
-         }
-
-         .p1 {
-           width:1.4em;
-           height:1.4em;
-           background:#321;
-         }
-
-         .eval {
-           color: #333;
-         }
-        </style>
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <h1 align="center">Gomoku WaSM</h1>
+        <div align="center" style="margin:1em">
+            <a href="#" id="newGameButton" style="margin-right: 2em">New Game</a>
+            <input type="checkbox" id="playWhiteCheckbox" style="margin-right:0.5em">play white</input>
+        </div>
+
         <div id="grid" />
         <script src="gomoku.js"></script>
         <script src="game.js"></script>
