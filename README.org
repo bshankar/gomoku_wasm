@@ -1,0 +1,16 @@
+* gomoku_wasm
+
+Play against the Gomoku AI powered by webassembly
+
+* Usage
+
+Install [[http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html][Emcripten]] and make sure emcc is in your path. And then, run
+these commands.
+
+#+BEGIN_SRC shell
+git clone https://github.com/bshankar/gomoku_wasm.git
+cd gomoku_wasm/gomoku/src/
+make
+#+END_SRC
+
+Open index.html in a web browser.
