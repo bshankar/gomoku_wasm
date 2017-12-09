@@ -1,4 +1,3 @@
-
 Module.addOnPostRun(() => {
   function getGridHtml (m, n) {
     let gridHtml = '<table align="center">'
@@ -18,11 +17,14 @@ Module.addOnPostRun(() => {
 
   let playerTurn = false
   let currentPlayer = 0
+  let previousCell = null
   let search = null
   const depth = 6
 
   function startGame () {
     search = new Module.Search()
+    currentPlayer = 0
+    previousCell = null
     playerTurn = $('playWhiteCheckbox').checked
     for (let i = 0; i < 361; ++i) $('' + i).className = 'box empty'
     if (playerTurn === false) makeBestMove()
@@ -30,7 +32,10 @@ Module.addOnPostRun(() => {
 
   function placeBead (cell) {
     search.place(currentPlayer, cell)
-    $(cell).className = 'player' + currentPlayer
+    if (previousCell !== null) $(previousCell).classList.remove('highlight')
+    $(cell).classList.remove('empty')
+    $(cell).className += 'box player' + currentPlayer + ' highlight'
+    previousCell = cell
     togglePlayer()
   }
 
