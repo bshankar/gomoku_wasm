@@ -95,6 +95,11 @@ Module.addOnPostRun(() => {
   }
 
   function readPlayerMove (cell) {
+    if (search === null) {
+      $('playWhiteCheckbox').checked = true
+      startGame()
+    }
+
     if (search.winner() === -1) {
       placeBead(cell)
       checkIfWon()
