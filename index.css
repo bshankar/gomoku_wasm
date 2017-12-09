@@ -4,23 +4,27 @@
   
 }
 .empty {
-  background:#fd5;
+  background: #fd5;
 }
 
 .player0 {
-  background:#f81;
+  background: #f81;
 }
 
-.player0 .highlight {
-  background: #e61;
+.highlight {
+  background: #f00;
+}
+
+.player0.highlight {
+  background: #c51;
 }
 
 .player1 {
   background:#321;
 }
 
-.player1 .highlight {
-  background: #431;
+.player1.highlight {
+  background: #654;
 }
 
 .eval {
