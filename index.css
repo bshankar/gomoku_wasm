@@ -1,19 +1,26 @@
-.empty {
+.box {
   width:1.4em;
   height:1.4em;
+  
+}
+.empty {
   background:#fd5;
 }
 
-.p0 {
-  width:1.4em;
-  height:1.4em;
+.player0 {
   background:#f81;
 }
 
-.p1 {
-  width:1.4em;
-  height:1.4em;
+.player0 .highlight {
+  background: #e61;
+}
+
+.player1 {
   background:#321;
+}
+
+.player1 .highlight {
+  background: #431;
 }
 
 .eval {
