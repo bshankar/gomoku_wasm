@@ -24,6 +24,8 @@ Module.addOnPostRun(() => {
 
   function startGame () {
     search = new Module.Search()
+    depth = Number($('depthInput').value)
+    if (depth > 16 || depth < 1) depth = 4
     $('depthInput').value = depth
     currentPlayer = 0
     previousCell = null
