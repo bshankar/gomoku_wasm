@@ -52,7 +52,7 @@ Module.addOnPostRun(() => {
   function showWinningCombination () {
     const isPartOfWin = c => c > 0 && c < 361 && $(c).classList.contains('player' + (currentPlayer ^ 1))
     const c = previousCell
-    for (let i = 0; i < 4; ++i) {
+    for (let i = 0; i < 5; ++i) {
       const combination = [...Array(5).keys()]
       const rowCombination = combination.map(e => c + i - e)
       const columnCombination = combination.map(e => c + 19 * (i - e))
