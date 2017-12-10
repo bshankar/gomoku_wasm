@@ -19,10 +19,12 @@ Module.addOnPostRun(() => {
   let currentPlayer = 0
   let previousCell = null
   let search = null
-  const depth = 6
+  let depth = Number($('depthInput').value)
+  if (depth > 16 || depth < 1) depth = 4
 
   function startGame () {
     search = new Module.Search()
+    $('depthInput').value = depth
     currentPlayer = 0
     previousCell = null
     playerTurn = $('playWhiteCheckbox').checked
