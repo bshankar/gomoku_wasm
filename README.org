@@ -1,6 +1,7 @@
 * gomoku_wasm
 
-Play against the Gomoku AI powered by webassembly
+Play against the Gomoku AI powered by webassembly. An instance of this
+game is hosted at [[https://gomoku-wasm.now.sh][now.sh]].
 
 * Usage
 
